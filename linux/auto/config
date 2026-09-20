@@ -15,4 +15,5 @@ lb config noauto \
   --debian-installer none \
   --memtest none \
   --apt-recommends false \
+  --apt-indices false \
   "$@"
