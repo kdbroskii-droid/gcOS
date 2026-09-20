@@ -1,0 +1,48 @@
+name: Build xoriesOS
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "linux/**"
+      - ".github/workflows/build-xoriesos.yml"
+      - "README.md"
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Check out xoriesOS
+        uses: actions/checkout@v4
+
+      - name: Install build tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y             live-build             debootstrap             debian-archive-keyring             xorriso             squashfs-tools             qemu-system-x86
+
+      - name: Build xoriesOS
+        working-directory: linux
+        run: |
+          chmod +x auto/config
+          chmod +x build-xoriesos.sh
+          chmod +x config/hooks/live/0100-install-google-chrome.chroot
+          chmod +x config/hooks/live/0200-xoriesos-branding.chroot
+          sudo ./build-xoriesos.sh
+
+      - name: Verify ISO
+        run: |
+          test -f linux/build-output/xoriesOS.iso
+          ls -lh linux/build-output/xoriesOS.iso
+          file linux/build-output/xoriesOS.iso
+
+      - name: Upload xoriesOS ISO
+        uses: actions/upload-artifact@v4
+        with:
+          name: xoriesOS-iso
+          path: linux/build-output/xoriesOS.iso
+          if-no-files-found: error
+          retention-days: 7

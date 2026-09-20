@@ -1,0 +1,16 @@
+#!/bin/sh
+set -eu
+
+export DEBIAN_FRONTEND=noninteractive
+
+apt-get update
+
+wget -q \
+  --show-progress \
+  "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb" \
+  -O /tmp/google-chrome-stable.deb
+
+apt-get install -y /tmp/google-chrome-stable.deb
+
+rm -f /tmp/google-chrome-stable.deb
+rm -rf /var/lib/apt/lists/*

@@ -1,0 +1,70 @@
+# Base
+systemd
+systemd-sysv
+dbus
+sudo
+bash
+coreutils
+util-linux
+nano
+less
+curl
+wget
+ca-certificates
+pciutils
+usbutils
+htop
+
+# Kernel / live system
+linux-image-amd64
+live-boot
+live-config
+
+# Desktop
+xorg
+xfce4
+xfce4-terminal
+thunar
+thunar-archive-plugin
+file-roller
+lightdm
+lightdm-gtk-greeter
+policykit-1
+gvfs
+gvfs-backends
+udisks2
+
+# Network / Wi-Fi
+network-manager
+network-manager-gnome
+wpasupplicant
+wireless-tools
+iw
+
+# Bluetooth
+bluez
+blueman
+
+# Audio
+pipewire
+pipewire-audio
+pipewire-pulse
+wireplumber
+pavucontrol
+
+# Graphics / firmware
+mesa-vulkan-drivers
+firmware-linux-free
+firmware-linux-nonfree
+firmware-iwlwifi
+firmware-atheros
+firmware-realtek
+firmware-brcm80211
+firmware-mediatek
+firmware-sof-signed
+
+# Basic desktop extras
+mousepad
+xfce4-notifyd
+xfce4-power-manager
+xfce4-screenshooter

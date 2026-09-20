@@ -1,0 +1,22 @@
+#!/bin/sh
+set -eu
+
+cat > /etc/os-release <<'EOF'
+PRETTY_NAME="xoriesOS"
+NAME="xoriesOS"
+ID=xoriesos
+ID_LIKE=debian
+VERSION_ID="1.0"
+VERSION="1.0"
+HOME_URL="https://github.com/kdbroskii-droid/gcOS"
+EOF
+
+cat > /etc/issue <<'EOF'
+xoriesOS 1.0
+\n
+\l
+EOF
+
+systemctl enable NetworkManager || true
+systemctl enable bluetooth || true
+systemctl enable lightdm || true

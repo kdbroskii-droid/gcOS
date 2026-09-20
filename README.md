@@ -1,41 +1,32 @@
-# gcOS
+# xoriesOS
 
-A gaming-focused operating-system prototype designed to be developed and tested safely in QEMU before touching real hardware.
+xoriesOS is a lightweight Debian-based desktop operating system designed to stay below a 2 GB ISO target.
 
-## Current prototype
+Included:
+- XFCE desktop
+- Xorg display server
+- XFCE Terminal
+- Google Chrome Stable
+- NetworkManager + Wi-Fi support
+- Bluetooth + Blueman
+- PipeWire audio
+- File manager and removable-storage support
+- Debian Linux kernel
+- Common firmware for Wi-Fi, Bluetooth, audio and graphics
+- sudo and basic system utilities
 
-- GRUB Multiboot boot
-- 32-bit freestanding C kernel
-- VGA text display
-- Keyboard polling
-- Guest Session passcode creation
-- Passcode confirmation
-- Empty passcode option
-- Guest Session welcome screen
+The build is done in GitHub Actions so a low-memory Chromebook does not have to build the ISO locally.
 
-The current passcode is memory-only. It is not persistent yet.
+## Build
 
-## Build on Debian/ChromeOS Linux
+Push changes under linux/ or manually run the GitHub Actions workflow.
 
-Install the tools:
+The workflow fails if the resulting ISO is larger than 2 GiB.
 
-    sudo apt update
-    sudo apt install build-essential grub-pc-bin xorriso mtools qemu-system-x86
+## Test
 
-Clone the repository:
+After downloading the artifact:
 
-    git clone https://github.com/kdbroskii-droid/gcOS.git
-    cd gcOS
+qemu-system-x86_64 -m 1024 -smp 2 -cdrom xoriesOS.iso
 
-Build:
-
-    chmod +x build.sh
-    ./build.sh
-
-Run in QEMU:
-
-    qemu-system-i386 -m 128M -cdrom build/gcos.iso
-
-## Safety
-
-gcOS is intended to be tested in QEMU first. Do not replace ChromeOS or write the ISO to a physical drive while the project is still experimental.
+This is an amd64 build.
