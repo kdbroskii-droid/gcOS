@@ -15,7 +15,9 @@ fi
 rm -rf binary chroot cache .build
 
 chmod +x auto/config
-./auto/config
+
+# auto/config uses "noauto", so this performs exactly one configuration pass.
+lb config
 
 lb build
 
@@ -27,4 +29,4 @@ echo "gcOS Linux ISO built:"
 echo "  build-output/gcos-linux.iso"
 echo
 echo "Run:"
-echo "  qemu-system-x86_64 -m 2048 -smp 2 -cdrom build-output/gcos-linux.iso"
+echo "  qemu-system-x86_64 -m 1024 -smp 2 -cdrom build-output/gcos-linux.iso"
