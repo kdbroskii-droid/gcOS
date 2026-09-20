@@ -158,6 +158,7 @@ void terminal_header(void)
     clear_screen();
     print_colored("gcOS TERMINAL", 1, 3, BLUE);
     print_at("Type 'help' for commands.", 3, 3);
+    print_colored("TEST: gcOS terminal is working!", 5, 3, BLUE);
 }
 
 void terminal_prompt(void)
