@@ -11,7 +11,10 @@ if ! command -v lb >/dev/null 2>&1; then
     exit 1
 fi
 
-rm -rf config binary chroot cache .build
+# Keep config/package-lists intact. The package list is part of the source tree.
+rm -rf binary chroot cache .build
+
+chmod +x auto/config
 ./auto/config
 
 lb build
