@@ -336,6 +336,11 @@ void execute_command(void)
         print_at("Guest filesystem: RAM prototype", 7, 3);
         print_at("Hardware access: keyboard + VGA", 8, 3);
     }
+    else if (strings_equal(command_line, "test"))
+    {
+        print_colored("Hello from the gcOS terminal!", 5, 3, BLUE);
+        print_at("Terminal input and command execution are working.", 6, 3);
+    }
     else if (strings_equal(command_line, "exit"))
     {
         return;
