@@ -1,0 +1,35 @@
+# Core desktop
+xfce4
+xfce4-terminal
+lightdm
+lightdm-gtk-greeter
+
+# Browser / web account connection
+chromium
+
+# Networking
+network-manager
+network-manager-gnome
+
+# Audio
+pipewire
+pipewire-audio
+wireplumber
+pavucontrol
+
+# Graphics / gaming
+mesa-vulkan-drivers
+vulkan-tools
+gamemode
+
+# Hardware / utilities
+pciutils
+usbutils
+acpi
+sudo
+curl
+wget
+git
+nano
+htop
+neofetch
