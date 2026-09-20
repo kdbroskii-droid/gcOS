@@ -24,6 +24,12 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y             live-build             debootstrap             debian-archive-keyring             xorriso             squashfs-tools             qemu-system-x86
 
+      - name: Fix live-build Debian Contents paths
+        run: |
+          sudo sed -i             's#${LB_PARENT_MIRROR_CHROOT}/dists/${LB_PARENT_DISTRIBUTION}/Contents-${LB_ARCHITECTURES}.gz#${LB_PARENT_MIRROR_CHROOT}/dists/${LB_PARENT_DISTRIBUTION}/main/Contents-${LB_ARCHITECTURES}.gz#g'             /usr/lib/live/build/lb_chroot_linux-image
+          sudo sed -i             's#${LB_MIRROR_CHROOT}/dists/${LB_DISTRIBUTION}/Contents-${LB_ARCHITECTURES}.gz#${LB_MIRROR_CHROOT}/dists/${LB_DISTRIBUTION}/main/Contents-${LB_ARCHITECTURES}.gz#g'             /usr/lib/live/build/lb_chroot_linux-image
+          grep -n "Contents-" /usr/lib/live/build/lb_chroot_linux-image
+
       - name: Build xoriesOS
         working-directory: linux
         run: |
