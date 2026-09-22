@@ -1,6 +1,6 @@
 # Base
 systemd
-systemd-sysv
+live-config-systemd
 dbus
 sudo
 bash
